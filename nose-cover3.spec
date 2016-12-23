@@ -4,7 +4,7 @@
 #
 Name     : nose-cover3
 Version  : 0.1.0
-Release  : 11
+Release  : 12
 URL      : https://pypi.python.org/packages/source/n/nose-cover3/nose-cover3-0.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/n/nose-cover3/nose-cover3-0.1.0.tar.gz
 Summary  : Coverage 3.x support for Nose
