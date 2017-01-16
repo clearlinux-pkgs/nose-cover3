@@ -4,7 +4,7 @@
 #
 Name     : nose-cover3
 Version  : 0.1.0
-Release  : 13
+Release  : 14
 URL      : https://pypi.python.org/packages/source/n/nose-cover3/nose-cover3-0.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/source/n/nose-cover3/nose-cover3-0.1.0.tar.gz
 Summary  : Coverage 3.x support for Nose
@@ -34,13 +34,16 @@ python components for the nose-cover3 package.
 %setup -q -n nose-cover3-0.1.0
 
 %build
+export LANG=C
+export SOURCE_DATE_EPOCH=1484555036
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
 %install
+export SOURCE_DATE_EPOCH=1484555036
 rm -rf %{buildroot}
-python2 setup.py build -b py2 install --root=%{buildroot}
-python3 setup.py build -b py3 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 
 %files
 %defattr(-,root,root,-)
