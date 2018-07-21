@@ -4,7 +4,7 @@
 #
 Name     : nose-cover3
 Version  : 0.1.0
-Release  : 16
+Release  : 17
 URL      : http://pypi.debian.net/nose-cover3/nose-cover3-0.1.0.tar.gz
 Source0  : http://pypi.debian.net/nose-cover3/nose-cover3-0.1.0.tar.gz
 Summary  : Coverage 3.x support for Nose
