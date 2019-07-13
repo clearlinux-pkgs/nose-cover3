@@ -4,7 +4,7 @@
 #
 Name     : nose-cover3
 Version  : 0.1.0
-Release  : 20
+Release  : 21
 URL      : https://files.pythonhosted.org/packages/f0/17/8c55242e86830a006bbaa0463f4a1da44f332ef7cd5a402f459c8dbaaf84/nose-cover3-0.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/17/8c55242e86830a006bbaa0463f4a1da44f332ef7cd5a402f459c8dbaaf84/nose-cover3-0.1.0.tar.gz
 Summary  : Coverage 3.x support for Nose
