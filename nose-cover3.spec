@@ -4,24 +4,21 @@
 #
 Name     : nose-cover3
 Version  : 0.1.0
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/f0/17/8c55242e86830a006bbaa0463f4a1da44f332ef7cd5a402f459c8dbaaf84/nose-cover3-0.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/17/8c55242e86830a006bbaa0463f4a1da44f332ef7cd5a402f459c8dbaaf84/nose-cover3-0.1.0.tar.gz
 Summary  : Coverage 3.x support for Nose
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: nose-cover3-python3
-Requires: nose-cover3-license
-Requires: nose-cover3-python
+Requires: nose-cover3-license = %{version}-%{release}
+Requires: nose-cover3-python = %{version}-%{release}
+Requires: nose-cover3-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : pbr
-BuildRequires : pip
-BuildRequires : python3-dev
-BuildRequires : setuptools
 
 %description
+================================
 Coverage 3.x support for Nose.
-        ================================
+================================
 
 %package license
 Summary: license components for the nose-cover3 package.
@@ -34,7 +31,7 @@ license components for the nose-cover3 package.
 %package python
 Summary: python components for the nose-cover3 package.
 Group: Default
-Requires: nose-cover3-python3
+Requires: nose-cover3-python3 = %{version}-%{release}
 
 %description python
 python components for the nose-cover3 package.
@@ -44,6 +41,7 @@ python components for the nose-cover3 package.
 Summary: python3 components for the nose-cover3 package.
 Group: Default
 Requires: python3-core
+Provides: pypi(nose-cover3)
 
 %description python3
 python3 components for the nose-cover3 package.
@@ -51,20 +49,29 @@ python3 components for the nose-cover3 package.
 
 %prep
 %setup -q -n nose-cover3-0.1.0
+cd %{_builddir}/nose-cover3-0.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1532382829
-python3 setup.py build -b py3
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583187170
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/nose-cover3
-cp LICENSE %{buildroot}/usr/share/doc/nose-cover3/LICENSE
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/nose-cover3
+cp %{_builddir}/nose-cover3-0.1.0/LICENSE %{buildroot}/usr/share/package-licenses/nose-cover3/545f380fb332eb41236596500913ff8d582e3ead
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -73,8 +80,8 @@ echo ----[ mark ]----
 %defattr(-,root,root,-)
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/nose-cover3/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/nose-cover3/545f380fb332eb41236596500913ff8d582e3ead
 
 %files python
 %defattr(-,root,root,-)
