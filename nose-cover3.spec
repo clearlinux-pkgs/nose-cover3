@@ -4,7 +4,7 @@
 #
 Name     : nose-cover3
 Version  : 0.1.0
-Release  : 24
+Release  : 25
 URL      : https://files.pythonhosted.org/packages/f0/17/8c55242e86830a006bbaa0463f4a1da44f332ef7cd5a402f459c8dbaaf84/nose-cover3-0.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/f0/17/8c55242e86830a006bbaa0463f4a1da44f332ef7cd5a402f459c8dbaaf84/nose-cover3-0.1.0.tar.gz
 Summary  : Coverage 3.x support for Nose
@@ -16,9 +16,8 @@ Requires: nose-cover3-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-================================
 Coverage 3.x support for Nose.
-================================
+        ================================
 
 %package license
 Summary: license components for the nose-cover3 package.
@@ -41,7 +40,7 @@ python components for the nose-cover3 package.
 Summary: python3 components for the nose-cover3 package.
 Group: Default
 Requires: python3-core
-Provides: pypi(nose-cover3)
+Provides: pypi(nose_cover3)
 
 %description python3
 python3 components for the nose-cover3 package.
@@ -56,8 +55,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583187170
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583537707
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
